@@ -30,11 +30,17 @@ param(
     $CustomEventAction = "inline"
 )
 
+# https://developer.github.com/v3/repos/#create-a-repository-dispatch-event
 $uri = "https://api.github.com/repos/$GithubUserName/$GithubRepo/dispatches"
 
 $body = @{
     # used for if condition of Github Action
-    "event_type" = $CustomEventAction
+    event_type = $CustomEventAction
+    client_payload = @{
+        debug = $true
+        my_setting1 = "foo"
+        my_setting2 = "bar"
+    }
 } | ConvertTo-Json
 
 $params = @{
