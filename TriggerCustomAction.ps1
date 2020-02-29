@@ -8,13 +8,13 @@
     $env:GITHUB_TOKEN = "<GITHUB_ACCESS_TOKEN>"
 
     # Trigger inline action
-    TriggerCustomAction.ps1 -CustomEventAction "inline"
+    ./TriggerCustomAction.ps1 -CustomEventAction "inline"
 
     # Trigger multi action
-    TriggerCustomAction.ps1 -CustomEventAction "multi"
+    ./TriggerCustomAction.ps1 -CustomEventAction "multi"
 
     # Trigger inline action
-    TriggerCustomAction.ps1 -CustomEventAction "script"
+    ./TriggerCustomAction.ps1 -CustomEventAction "script"
 #>
 
 [CmdletBinding()]
@@ -34,7 +34,7 @@ $uri = "https://api.github.com/repos/$GithubUserName/$GithubRepo/dispatches"
 
 $body = @{
     # used for if condition of Github Action
-    "event_type" = "script"
+    "event_type" = $CustomEventAction
 } | ConvertTo-Json
 
 $params = @{
