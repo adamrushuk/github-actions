@@ -1,5 +1,5 @@
 # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions
-name: CI
+name: HelloWorld
 
 # name of GitHub event that triggers workflow
 on: [push]
