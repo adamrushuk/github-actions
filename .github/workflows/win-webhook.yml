@@ -25,10 +25,9 @@ jobs:
     - name: Run a multi-line PowerShell code
       if: github.event.action == 'multi'
       run: |
-        Get-Process
         gci env:
-        $PSVersionTable
         Write-Output 'Hello World - from multi-line GH Action code'
+        $PSVersionTable
 
     # trigger script action
     - name: Run a PowerShell script
