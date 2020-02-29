@@ -1,0 +1,36 @@
+# https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions
+name: Windows Webhook
+
+# name of GitHub event that triggers workflow
+# https://help.github.com/en/actions/reference/events-that-trigger-workflows#external-events-repository_dispatch
+on: [repository_dispatch]
+
+jobs:
+  build:
+
+    # always pin versions
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+
+    # trigger inline action
+    - name: Run inline PowerShell
+      # You can access context information and evaluate expressions in workflows and actions
+      # https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#github-context
+      if: github.event.action == 'inline'
+      run: Write-Output 'Hello World - from inline GH Action code'
+
+    # trigger multi action
+    - name: Run a multi-line PowerShell code
+      if: github.event.action == 'multi'
+      run: |
+        Get-Process
+        gci env:
+        $PSVersionTable
+        Write-Output 'Hello World - from multi-line GH Action code'
+
+    # trigger script action
+    - name: Run a PowerShell script
+      if: github.event.action == 'script'
+      run: pwsh -command ".\$GITHUB_WORKSPACE\Hello-World.ps1"

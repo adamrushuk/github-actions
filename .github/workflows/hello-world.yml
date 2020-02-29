@@ -1,12 +1,14 @@
+# https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions
 name: CI
 
-# The name of the GitHub event that triggers the workflow
+# name of GitHub event that triggers workflow
 on: [push]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    # always pin versions
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v2
@@ -16,3 +18,5 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+
+        env | sort
