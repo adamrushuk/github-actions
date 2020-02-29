@@ -19,7 +19,7 @@ jobs:
       # You can access context information and evaluate expressions in workflows and actions
       # https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#github-context
       if: github.event.action == 'inline'
-      run: Write-Output "Hello World - from inline GH Action code`n`n$($PSVersionTable)"
+      run: Write-Output "Hello World - from inline GH Action code`n`n$($PSVersionTable | Out-String)"
 
     # trigger multi action
     - name: Run a multi-line PowerShell code
