@@ -2,7 +2,13 @@
 name: Ubuntu - Bash - Hello World
 
 # name of GitHub event that triggers workflow
-on: [push]
+# on: [push]
+
+# this will effectively DISABLE this workflow
+on:
+  push:
+    branches-ignore:
+      - '**'
 
 jobs:
   build:
