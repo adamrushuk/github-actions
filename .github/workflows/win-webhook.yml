@@ -6,7 +6,7 @@ name: Windows Webhook
 on: [repository_dispatch]
 
 # it's possible to filter whole workflow using custom type sent, eg: from ValidateSet here:
-# https://github.com/adamrushuk/github-actions/blob/master/TriggerCustomAction.ps1#L29
+# https://github.com/adamrushuk/github-actions/blob/master/TriggerCustomAction.ps1#L33
 # on:
 #   repository_dispatch:
 #     types: [<custom event action>]
@@ -29,7 +29,7 @@ jobs:
 
     # trigger multi action
     - name: Run a multi-line PowerShell code
-      # events can be used from triggering script https://github.com/adamrushuk/github-actions/blob/master/TriggerCustomAction.ps1#L29
+      # events can be used from triggering script https://github.com/adamrushuk/github-actions/blob/master/TriggerCustomAction.ps1#L33
       if: github.event.action == 'multi'
       run: |
         gci env:
