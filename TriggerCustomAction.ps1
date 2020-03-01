@@ -41,7 +41,7 @@ $body = @{
     # used for if condition of Github Action
     event_type = $CustomEventAction
     client_payload = @{
-        debug = $true
+        debug = "true"
         my_setting1 = "foo"
         my_setting2 = "bar"
     }
