@@ -43,9 +43,15 @@ jobs:
       run: pwsh -command ".\$GITHUB_WORKSPACE\Hello-World.ps1"
 
     # always run (as no if expression used)
-    - name: Output client payload data
-      # github.event context can be used for more data than just client_payload
+    - name: Output event data
       run: |
-        $output = '${{ toJson( github.event.client_payload ) }}'
-        $output | gm
-        $output | fl *
+        # Get event context data
+        $eventContextJson = '${{ toJson( github.event ) }}'
+
+        # Convert to PowerShell object
+        $eventContext = $eventContextJson | ConvertFrom-Json
+
+        # Output info
+        Write-Output "action: $($eventContext.action)"
+        Write-Output "client_payload: $($eventContext.client_payload)"
+
