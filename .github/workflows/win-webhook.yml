@@ -40,3 +40,8 @@ jobs:
     - name: Run a PowerShell script
       if: github.event.action == 'script'
       run: pwsh -command ".\$GITHUB_WORKSPACE\Hello-World.ps1"
+
+    # always run
+    - name: Ouput client payload data
+      run: |
+        Write-Output ${{ github.event.client_payload }}
