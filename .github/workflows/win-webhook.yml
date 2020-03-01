@@ -45,4 +45,4 @@ jobs:
     # always run
     - name: Output client payload data
       run: |
-        Write-Output "$(${{ github.event.client_payload }} | Out-String)"
+        Write-Output "$( ${{ toJson( github.event.client_payload ) }} | Out-String )"
