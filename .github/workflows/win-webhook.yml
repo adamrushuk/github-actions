@@ -45,8 +45,6 @@ jobs:
     # always run
     - name: Output client payload data
       run: |
-        # Write-Output "$( ${{ toJson( github.event ) }} | ConvertFrom-Json | Out-String )"
-        # Write-Output "$( ${{ toJson( github.event ) }})"
         $output = ${{ toJson( github.event ) }}
         $output | gm
         $output | fl *
