@@ -42,9 +42,10 @@ jobs:
       if: github.event.action == 'script'
       run: pwsh -command ".\$GITHUB_WORKSPACE\Hello-World.ps1"
 
-    # always run
+    # always run (as no if expression used)
     - name: Output client payload data
+      # github.event context can be used for more data than just client_payload
       run: |
-        $output = '${{ toJson( github.event ) }}'
+        $output = '${{ toJson( github.event.client_payload ) }}'
         $output | gm
         $output | fl *
