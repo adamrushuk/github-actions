@@ -18,6 +18,7 @@ jobs:
     runs-on: windows-2019
 
     steps:
+    # https://github.com/actions/checkout#scenarios
     - uses: actions/checkout@v2
 
     # trigger inline action

@@ -27,7 +27,7 @@ param(
     $GithubRepo = "github-actions",
 
     # used to target specific steps:
-    # https://github.com/adamrushuk/github-actions/blob/master/.github/workflows/win-webhook.yml#L27
+    # https://github.com/adamrushuk/github-actions/blob/master/.github/workflows/win-webhook.yml#L28
     # or even whole workflows:
     # https://github.com/adamrushuk/github-actions/blob/master/.github/workflows/win-webhook.yml#L12
     [ValidateSet("inline","multi","script")]
