@@ -45,4 +45,4 @@ jobs:
     # always run
     - name: Output client payload data
       run: |
-        Write-Output ${{ toJson(github.event.client_payload) }}
+        Write-Output ${{ fromJson(github.event.client_payload) }}
